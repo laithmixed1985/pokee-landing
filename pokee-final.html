@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pokee AI — أتمتة أعمالك بالذكاء الاصطناعي</title>
+  <meta name="description" content="أتمتة أعمالك بالكامل مع Pokee AI — واتساب، بريد، سوشيال ميديا، فواتير. حلول ذكاء اصطناعي للشركات في الإمارات والأردن." />
+  <meta property="og:title" content="Pokee AI — أتمتة أعمالك" />
+  <meta property="og:description" content="وفّر 15 ساعة أسبوعياً مع حلول الأتمتة الذكية" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Cairo', 'Segoe UI', Tahoma, Arial, sans-serif;
+      background: #0a0a12;
+      color: #e2e8f0;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(10,10,18,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(99,102,241,0.15);
+      padding: 14px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand {
+      font-size: 22px; font-weight: 900;
+      background: linear-gradient(135deg,#6366f1,#ec4899);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a { color: #94a3b8; text-decoration: none; font-size: 14px; font-weight: 700; transition: color .2s; }
+    .nav-links a:hover { color: #e2e8f0; }
+    .nav-cta {
+      background: linear-gradient(135deg,#6366f1,#8b5cf6);
+      color: #fff; padding: 8px 20px; border-radius: 20px;
+      text-decoration: none; font-size: 14px; font-weight: 700;
+      transition: opacity .2s;
+    }
+    .nav-cta:hover { opacity: .85; }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 120px 24px 80px;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99,102,241,0.25), transparent),
+        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(236,72,153,0.15), transparent);
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(99,102,241,0.15);
+      border: 1px solid rgba(99,102,241,0.3);
+      color: #818cf8; border-radius: 20px;
+      padding: 6px 18px; font-size: 13px; font-weight: 700;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(36px, 7vw, 72px);
+      font-weight: 900; line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .hero h1 .grad {
+      background: linear-gradient(135deg,#6366f1,#8b5cf6,#ec4899);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: clamp(16px, 2.5vw, 20px);
+      color: #94a3b8; max-width: 600px; margin: 0 auto 40px;
+    }
+    .hero-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-hero-primary {
+      background: linear-gradient(135deg,#6366f1,#8b5cf6);
+      color: #fff; padding: 16px 36px; border-radius: 50px;
+      text-decoration: none; font-size: 16px; font-weight: 700;
+      box-shadow: 0 0 40px rgba(99,102,241,0.4);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn-hero-primary:hover { transform: translateY(-2px); box-shadow: 0 0 60px rgba(99,102,241,0.6); }
+    .btn-hero-secondary {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #e2e8f0; padding: 16px 36px; border-radius: 50px;
+      text-decoration: none; font-size: 16px; font-weight: 700;
+      transition: background .2s;
+    }
+    .btn-hero-secondary:hover { background: rgba(255,255,255,0.1); }
+    .hero-stats {
+      display: flex; gap: 40px; justify-content: center;
+      margin-top: 60px; flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat .num { font-size: 32px; font-weight: 900; color: #818cf8; }
+    .stat .label { font-size: 13px; color: #64748b; }
+
+    /* ===== SECTION BASE ===== */
+    .section { padding: 100px 24px; max-width: 1100px; margin: 0 auto; }
+    .section-full { padding: 100px 24px; }
+    .section-title { font-size: clamp(28px,4vw,42px); font-weight: 900; text-align: center; margin-bottom: 16px; }
+    .section-sub { text-align: center; color: #64748b; font-size: 16px; max-width: 500px; margin: 0 auto 60px; }
+
+    /* ===== FEATURES ===== */
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 20px; }
+    .feature-card {
+      background: #12121e;
+      border: 1px solid #1e1e30;
+      border-radius: 20px; padding: 28px;
+      transition: border-color .3s, transform .3s;
+    }
+    .feature-card:hover { border-color: #6366f1; transform: translateY(-4px); }
+    .feature-icon { font-size: 32px; margin-bottom: 14px; }
+    .feature-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+    .feature-card p { font-size: 14px; color: #64748b; line-height: 1.7; }
+
+    /* ===== PRICING ===== */
+    .pricing-wrap { background: linear-gradient(180deg, #0a0a12, #0d0d1a, #0a0a12); }
+    .plans { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; align-items: stretch; }
+    .plan {
+      background: #12121e; border: 1px solid #1e1e30;
+      border-radius: 24px; padding: 40px 32px;
+      width: 300px; text-align: center;
+      position: relative; display: flex; flex-direction: column;
+      transition: transform .3s;
+    }
+    .plan:hover { transform: translateY(-6px); }
+    .plan.popular { border-color: #6366f1; box-shadow: 0 0 40px rgba(99,102,241,0.2); }
+    .plan .badge {
+      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+      background: linear-gradient(135deg,#6366f1,#8b5cf6);
+      color: #fff; padding: 5px 20px; border-radius: 20px;
+      font-size: 12px; font-weight: 700;
+    }
+    .plan-name { font-size: 20px; font-weight: 900; margin-bottom: 6px; }
+    .plan-desc { font-size: 13px; color: #64748b; margin-bottom: 20px; }
+    .plan-price { font-size: 44px; font-weight: 900; color: #818cf8; margin-bottom: 4px; }
+    .plan-price span { font-size: 16px; color: #64748b; }
+    .plan-features { list-style: none; margin: 24px 0 32px; text-align: right; flex: 1; }
+    .plan-features li {
+      padding: 10px 0;
+      border-bottom: 1px solid #1e1e30;
+      font-size: 14px; color: #94a3b8;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .plan-features li::before { content: "✓"; color: #6366f1; font-weight: 900; flex-shrink: 0; }
+    .plan-features li:last-child { border-bottom: none; }
+    .btn-plan {
+      display: block;
+      background: linear-gradient(135deg,#6366f1,#8b5cf6);
+      color: #fff; padding: 14px; border-radius: 40px;
+      text-decoration: none; font-weight: 700; font-size: 15px;
+      transition: opacity .2s, transform .2s;
+      margin-top: auto;
+    }
+    .btn-plan:hover { opacity: .88; transform: scale(1.02); }
+    .plan:not(.popular) .btn-plan {
+      background: transparent;
+      border: 2px solid #6366f1;
+      color: #818cf8;
+    }
+    .plan:not(.popular) .btn-plan:hover { background: rgba(99,102,241,0.1); }
+
+    /* ===== TEMPLATES / GUMROAD ===== */
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 20px; }
+    .product-card {
+      background: #12121e; border: 1px solid #1e1e30;
+      border-radius: 20px; padding: 28px 20px; text-align: center;
+      transition: border-color .3s, transform .3s;
+    }
+    .product-card:hover { border-color: #ec4899; transform: translateY(-4px); }
+    .product-icon { font-size: 40px; margin-bottom: 14px; }
+    .product-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; line-height: 1.4; }
+    .product-price { color: #ec4899; font-weight: 900; font-size: 20px; margin-bottom: 18px; }
+    .btn-buy {
+      background: linear-gradient(135deg,#ec4899,#8b5cf6);
+      color: #fff; padding: 10px 24px; border-radius: 30px;
+      text-decoration: none; font-size: 14px; font-weight: 700;
+      display: inline-block; transition: opacity .2s;
+    }
+    .btn-buy:hover { opacity: .85; }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 20px; }
+    .testimonial {
+      background: #12121e; border: 1px solid #1e1e30;
+      border-radius: 20px; padding: 28px;
+    }
+    .testimonial .stars { color: #f59e0b; font-size: 18px; margin-bottom: 14px; }
+    .testimonial p { font-size: 14px; color: #94a3b8; line-height: 1.8; margin-bottom: 20px; }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .author-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: linear-gradient(135deg,#6366f1,#ec4899);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 700; color: #fff; flex-shrink: 0;
+    }
+    .author-name { font-size: 14px; font-weight: 700; }
+    .author-title { font-size: 12px; color: #64748b; }
+
+    /* ===== CONTACT ===== */
+    .contact-form {
+      background: #12121e; border: 1px solid #1e1e30;
+      border-radius: 24px; padding: 48px 40px;
+      max-width: 600px; margin: 0 auto;
+    }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; font-size: 14px; font-weight: 700; margin-bottom: 8px; color: #94a3b8; }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: #0a0a12; border: 1px solid #1e1e30;
+      color: #e2e8f0; border-radius: 12px; padding: 14px 18px;
+      font-size: 15px; font-family: inherit;
+      transition: border-color .2s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus { outline: none; border-color: #6366f1; }
+    .form-group textarea { height: 140px; resize: vertical; }
+    .btn-submit {
+      width: 100%;
+      background: linear-gradient(135deg,#6366f1,#8b5cf6);
+      color: #fff; border: none; padding: 16px;
+      border-radius: 40px; font-size: 16px; font-weight: 700;
+      cursor: pointer; transition: opacity .2s, transform .2s;
+      font-family: inherit;
+    }
+    .btn-submit:hover { opacity: .88; transform: translateY(-1px); }
+    .btn-submit:disabled { opacity: .5; cursor: not-allowed; }
+    .success-msg {
+      display: none; text-align: center;
+      color: #10b981; font-size: 16px; font-weight: 700;
+      padding: 20px;
+    }
+
+    /* ===== WHATSAPP FLOAT ===== */
+    .whatsapp-float {
+      position: fixed; bottom: 28px; left: 28px; z-index: 999;
+      background: #25d366; color: #fff;
+      width: 58px; height: 58px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px; text-decoration: none;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      transition: transform .2s;
+    }
+    .whatsapp-float:hover { transform: scale(1.1); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      text-align: center; padding: 40px 24px;
+      border-top: 1px solid #1e1e30;
+      color: #475569; font-size: 14px;
+    }
+    footer strong { color: #818cf8; }
+
+    /* ===== DIVIDER ===== */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #1e1e30, transparent);
+      margin: 0 24px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .contact-form { padding: 32px 20px; }
+      .plan { width: 100%; max-width: 340px; }
+      .hero-stats { gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar">
+  <div class="nav-brand">🤖 Pokee AI</div>
+  <ul class="nav-links">
+    <li><a href="#features">المزايا</a></li>
+    <li><a href="#plans">الأسعار</a></li>
+    <li><a href="#templates">القوالب</a></li>
+    <li><a href="#contact">تواصل</a></li>
+  </ul>
+  <a href="#plans" class="nav-cta">ابدأ الآن</a>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div>
+    <div class="hero-badge">✨ الأتمتة الذكية للشركات العربية</div>
+    <h1>وفّر <span class="grad">15 ساعة</span><br>كل أسبوع مع Pokee AI</h1>
+    <p>أتمتة واتساب، البريد، السوشيال ميديا، والفواتير — كل شيء يعمل تلقائياً بينما تركز على نمو أعمالك</p>
+    <div class="hero-buttons">
+      <a href="#plans" class="btn-hero-primary">ابدأ مجاناً 14 يوم ←</a>
+      <a href="#templates" class="btn-hero-secondary">تصفح القوالب</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="num">+500</div><div class="label">شركة تستخدمنا</div></div>
+      <div class="stat"><div class="num">15h</div><div class="label">توفير أسبوعي</div></div>
+      <div class="stat"><div class="num">99%</div><div class="label">رضا العملاء</div></div>
+      <div class="stat"><div class="num">24/7</div><div class="label">تعمل بدون توقف</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== FEATURES ===== -->
+<div class="section" id="features">
+  <div class="section-title">كل ما تحتاجه في مكان واحد</div>
+  <div class="section-sub">أدوات الأتمتة الأكثر قوة للشركات الصغيرة والمتوسطة</div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">💬</div>
+      <h3>بوت واتساب ذكي</h3>
+      <p>يرد على العملاء، يحجز المواعيد، ويجمع الطلبات تلقائياً — على مدار الساعة</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📧</div>
+      <h3>أتمتة البريد الإلكتروني</h3>
+      <p>يصنف رسائلك، يستخرج البيانات المهمة، ويرسل ردوداً تلقائية للعملاء</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📱</div>
+      <h3>جدولة السوشيال ميديا</h3>
+      <p>انشر على جميع منصاتك من مكان واحد — Instagram، LinkedIn، TikTok</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🧾</div>
+      <h3>معالجة الفواتير</h3>
+      <p>استخرج بيانات الفواتير وأرسلها لنظام محاسبتك في ثوانٍ</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <h3>تقارير ذكية</h3>
+      <p>تقارير أسبوعية تلقائية عن أداء عملك ترسل مباشرة على إيميلك</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔗</div>
+      <h3>400+ تكامل</h3>
+      <p>يتصل بجميع أدواتك — Google، Notion، Slack، Shopify والمزيد</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ===== PRICING ===== -->
+<div class="section-full pricing-wrap" id="plans">
+  <div class="section" style="padding-top:0;padding-bottom:0;">
+    <div class="section-title">اختر خطتك</div>
+    <div class="section-sub">ابدأ مجاناً لمدة 14 يوم — بدون بطاقة ائتمان</div>
+    <div class="plans">
+
+      <!-- Starter -->
+      <div class="plan">
+        <div class="plan-name">Starter</div>
+        <div class="plan-desc">للأفراد والمستقلين</div>
+        <div class="plan-price">245 <span>AED/شهر</span></div>
+        <ul class="plan-features">
+          <li>100 مهمة أتمتة شهرياً</li>
+          <li>ربط Gmail و Drive</li>
+          <li>بوت واتساب أساسي</li>
+          <li>دعم عبر البريد الإلكتروني</li>
+          <li>تحديثات مجانية</li>
+        </ul>
+        <!-- ⚠️ استبدل الرابط برابط Stripe الحقيقي -->
+        <a href="https://checkout.paddle.com/checkout/buy/pri_01kkk7d5d06p2q1cbhtdj3wf1q" class="btn-plan">اشترك الآن</a>
+      </div>
+
+      <!-- Pro -->
+      <div class="plan popular">
+        <div class="badge">⭐ الأكثر شيوعاً</div>
+        <div class="plan-name">Pro</div>
+        <div class="plan-desc">للشركات الصغيرة والفرق</div>
+        <div class="plan-price">495 <span>AED/شهر</span></div>
+        <ul class="plan-features">
+          <li>مهام غير محدودة</li>
+          <li>جميع التكاملات</li>
+          <li>بوت واتساب متقدم</li>
+          <li>جدولة السوشيال ميديا</li>
+          <li>أتمتة الفواتير</li>
+          <li>دعم فني أولوية</li>
+          <li>تقارير أسبوعية</li>
+        </ul>
+        <!-- ⚠️ استبدل الرابط برابط Stripe الحقيقي -->
+        <a href="https://checkout.paddle.com/checkout/buy/pri_01kkk77png7ewnzeys7y15ycnq" class="btn-plan">اشترك الآن</a>
+      </div>
+
+      <!-- Enterprise -->
+      <div class="plan">
+        <div class="plan-name">Enterprise</div>
+        <div class="plan-desc">للشركات الكبيرة</div>
+        <div class="plan-price">995 <span>AED/شهر</span></div>
+        <ul class="plan-features">
+          <li>كل مزايا Pro</li>
+          <li>نظام تذاكر دعم فني</li>
+          <li>تخصيص كامل للنظام</li>
+          <li>مدير حساب مخصص</li>
+          <li>تدريب الفريق</li>
+          <li>دعم 24/7 مباشر</li>
+        </ul>
+        <!-- ⚠️ استبدل الرابط برابط Stripe الحقيقي -->
+        <a href="https://checkout.paddle.com/checkout/buy/pri_01kkk7at0nn7e4h9kv5yyzqcqq" class="btn-plan">اشترك الآن</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ===== GUMROAD TEMPLATES ===== -->
+<div class="section" id="templates">
+  <div class="section-title">قوالب الأتمتة الجاهزة</div>
+  <div class="section-sub">اشترِ مرة واحدة — استخدم للأبد</div>
+  <div class="products-grid">
+
+    <div class="product-card">
+      <div class="product-icon">💬</div>
+      <h4>بوت واتساب الذكي للأعمال</h4>
+      <div class="product-price">299 AED</div>
+      <!-- ⚠️ استبدل الرابط برابط Gumroad الحقيقي -->
+      <a href="https://laithian48.gumroad.com/l/bwymfx" class="btn-buy">اشتري الآن</a>
+    </div>
+
+    <div class="product-card">
+      <div class="product-icon">📧</div>
+      <h4>منظم البريد الإلكتروني الذكي</h4>
+      <div class="product-price">199 AED</div>
+      <!-- ⚠️ استبدل الرابط برابط Gumroad الحقيقي -->
+      <a href="https://laithian48.gumroad.com/l/meryyy" class="btn-buy">اشتري الآن</a>
+    </div>
+
+    <div class="product-card">
+      <div class="product-icon">📱</div>
+      <h4>جدولة محتوى السوشيال ميديا</h4>
+      <div class="product-price">250 AED</div>
+      <!-- ⚠️ استبدل الرابط برابط Gumroad الحقيقي -->
+      <a href="https://laithian48.gumroad.com/l/uiesv" class="btn-buy">اشتري الآن</a>
+    </div>
+
+    <div class="product-card">
+      <div class="product-icon">🧾</div>
+      <h4>أتمتة معالجة الفواتير</h4>
+      <div class="product-price">500 AED</div>
+      <!-- ⚠️ استبدل الرابط برابط Gumroad الحقيقي -->
+      <a href="https://laithian48.gumroad.com/l/rkkme" class="btn-buy">اشتري الآن</a>
+    </div>
+
+    <div class="product-card">
+      <div class="product-icon">🎫</div>
+      <h4>نظام توجيه تذاكر الدعم</h4>
+      <div class="product-price">400 AED</div>
+      <!-- ⚠️ استبدل الرابط برابط Gumroad الحقيقي -->
+      <a href="https://laithian48.gumroad.com/l/okrhjv" class="btn-buy">اشتري الآن</a>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ===== TESTIMONIALS ===== -->
+<div class="section">
+  <div class="section-title">ماذا يقول عملاؤنا</div>
+  <div class="testimonials-grid">
+
+    <div class="testimonial">
+      <div class="stars">★★★★★</div>
+      <p>بوت واتساب Pokee وفّر علينا 3 موظفين في خدمة العملاء. العملاء يحصلون على ردود فورية 24/7 وحجوزاتنا ارتفعت 280%</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">س</div>
+        <div>
+          <div class="author-name">سارة الخالدي</div>
+          <div class="author-title">صاحبة سلسلة مطاعم، دبي</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial">
+      <div class="stars">★★★★★</div>
+      <p>أتمتة الفواتير وفّرت علينا 20 ساعة شهرياً. الآن كل فاتورة تُعالج تلقائياً وتُرسل لنظام المحاسبة في ثوانٍ</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">أ</div>
+        <div>
+          <div class="author-name">أحمد المنصور</div>
+          <div class="author-title">مدير مالي، شركة استيراد، عمّان</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial">
+      <div class="stars">★★★★★</div>
+      <p>نشرنا على 6 منصات يومياً بشكل تلقائي. المحتوى يُنتج بالذكاء الاصطناعي وينشر بجدولة ذكية — النتيجة: نمو 340%</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">ل</div>
+        <div>
+          <div class="author-name">لينا العمري</div>
+          <div class="author-title">مديرة تسويق، عيادة تجميل، أبوظبي</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ===== CONTACT ===== -->
+<div class="section" id="contact">
+  <div class="section-title">تواصل معنا</div>
+  <div class="section-sub">فريقنا يرد خلال ساعات</div>
+
+  <!--
+    ⚠️ استبدل xXXXXXXX بـ Formspree ID الحقيقي
+    مثال: action="https://formspree.io/f/xabcd123"
+  -->
+  <form class="contact-form" id="contactForm"
+        action="https://formspree.io/f/mvzwkedd"
+        method="POST">
+    <div class="form-group">
+      <label>الاسم الكريم</label>
+      <input type="text" name="name" placeholder="محمد أحمد" required />
+    </div>
+    <div class="form-group">
+      <label>البريد الإلكتروني</label>
+      <input type="email" name="email" placeholder="name@company.com" required />
+    </div>
+    <div class="form-group">
+      <label>رقم الواتساب</label>
+      <input type="tel" name="whatsapp" placeholder="+962 79 000 0000" dir="ltr" />
+    </div>
+    <div class="form-group">
+      <label>كيف يمكننا مساعدتك؟</label>
+      <textarea name="message" placeholder="أخبرنا عن احتياجات عملك..." required></textarea>
+    </div>
+    <button type="submit" class="btn-submit" id="submitBtn">أرسل الرسالة 🚀</button>
+    <div class="success-msg" id="successMsg">
+      ✅ تم إرسال رسالتك! سنتواصل معك خلال ساعات.
+    </div>
+  </form>
+</div>
+
+<!-- ===== WHATSAPP FLOAT ===== -->
+<!--
+  ⚠️ استبدل 962790114143 برقمك إذا تغيّر
+-->
+<a href="https://wa.me/962790114143?text=مرحباً%20Pokee%20AI%20-%20أريد%20الاستفسار%20عن%20خدماتكم"
+   class="whatsapp-float" target="_blank" title="تحدث معنا على واتساب">
+  💬
+</a>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <p>© 2026 <strong>Pokee AI</strong> by MixedSys — جميع الحقوق محفوظة</p>
+  <p style="margin-top:8px;font-size:12px;">
+    📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4c25222a230c21253429283f353f622f2321">[email&#160;protected]</a> &nbsp;|&nbsp;
+    📞 <span dir="ltr">+962 79 011 4143</span> &nbsp;|&nbsp;
+    📍 عمّان، الأردن
+  </p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ===== CONTACT FORM =====
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  const msg = document.getElementById('successMsg');
+
+  btn.disabled = true;
+  btn.textContent = 'جاري الإرسال...';
+
+  try {
+    const res = await fetch(this.action, {
+      method: 'POST',
+      body: new FormData(this),
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (res.ok) {
+      this.reset();
+      btn.style.display = 'none';
+      msg.style.display = 'block';
+    } else {
+      btn.disabled = false;
+      btn.textContent = 'أرسل الرسالة 🚀';
+      alert('حدث خطأ، يرجى المحاولة مرة أخرى');
+    }
+  } catch {
+    btn.disabled = false;
+    btn.textContent = 'أرسل الرسالة 🚀';
+    alert('تعذر الاتصال، تحقق من الإنترنت');
+  }
+});
+
+// ===== NAVBAR SCROLL =====
+window
