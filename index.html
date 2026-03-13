@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokee AI - خطط الاشتراك</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+        
+        .pricing-card.featured {
+            border: 3px solid #667eea;
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+        
+        .badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        
+        .plan-name {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .price {
+            font-size: 3em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+        
+        .currency {
+            font-size: 0.5em;
+        }
+        
+        .billing-period {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+        }
+        
+        .features {
+            list-style: none;
+            margin-bottom: 30px;
+            text-align: right;
+        }
+        
+        .features li {
+            padding: 10px 0;
+            color: #555;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .features li:before {
+            content: "✓ ";
+            color: #667eea;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .cta-button.secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+        
+        .cta-button.secondary:hover {
+            background: #f5f5f5;
+        }
+        
+        .contact-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            margin-top: 50px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-section h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .contact-method {
+            padding: 20px;
+            border-radius: 10px;
+            background: #f9f9f9;
+        }
+        
+        .contact-method h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .contact-method a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .contact-method a:hover {
+            text-decoration: underline;
+        }
+        
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+            
+            .pricing-card.featured:hover {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Pokee AI</h1>
+            <p>اختر الخطة المناسبة لك وابدأ الآن</p>
+        </div>
+        
+        <div class="pricing-grid">
+            <!-- Pokee Starter -->
+            <div class="pricing-card">
+                <h3 class="plan-name">Pokee Starter</h3>
+                <div class="price"><span class="currency">AED</span> 245</div>
+                <div class="billing-period">شهري</div>
+                <ul class="features">
+                    <li>ميزات أساسية</li>
+                    <li>دعم البريد الإلكتروني</li>
+                    <li>تحديثات منتظمة</li>
+                </ul>
+                <a href="https://checkout.paddle.com/checkout/buy/pri_01kkk7d5d06p2q1cbhtdj3wf1q" class="cta-button">اشترك الآن</a>
+            </div>
+            
+            <!-- Pokee Pro -->
+            <div class="pricing-card featured">
+                <div class="badge">الأكثر شهرة</div>
+                <h3 class="plan-name">Pokee Pro</h3>
+                <div class="price"><span class="currency">AED</span> 495</div>
+                <div class="billing-period">شهري</div>
+                <ul class="features">
+                    <li>جميع ميزات Starter</li>
+                    <li>دعم الأولوية</li>
+                    <li>تحليلات متقدمة</li>
+                    <li>API مخصص</li>
+                </ul>
+                <a href="https://checkout.paddle.com/checkout/buy/pri_01kkk77png7ewnzeys7y15ycnq" class="cta-button">اشترك الآن</a>
+            </div>
+            
+            <!-- Pokee Enterprise -->
+            <div class="pricing-card">
+                <h3 class="plan-name">Pokee Enterprise</h3>
+                <div class="price"><span class="currency">AED</span> 995</div>
+                <div class="billing-period">شهري</div>
+                <ul class="features">
+                    <li>جميع ميزات Pro</li>
+                    <li>دعم 24/7</li>
+                    <li>استشارة مخصصة</li>
+                    <li>تكامل مخصص</li>
+                </ul>
+                <a href="https://checkout.paddle.com/checkout/buy/pri_01kkk7at0nn7e4h9kv5yyzqcqq" class="cta-button">اشترك الآن</a>
+            </div>
+        </div>
+        
+        <div class="contact-section">
+            <h2>هل لديك أسئلة؟</h2>
+            <p>تواصل معنا عبر أحد القنوات التالية:</p>
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <h3>📧 البريد الإلكتروني</h3>
+                    <a href="mailto:info@mixedsys.com">info@mixedsys.com</a>
+                </div>
+                <div class="contact-method">
+                    <h3>💬 WhatsApp</h3>
+                    <a href="https://wa.me/962790114143" target="_blank">+962 790 114 143</a>
+                </div>
+                <div class="contact-method">
+                    <h3>🌐 الموقع</h3>
+                    <a href="https://pokee-ai.vercel.app" target="_blank">pokee-ai.vercel.app</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>&copy; 2026 MixedSys. جميع الحقوق محفوظة.</p>
+        </div>
+    </div>
+</body>
+</html>
